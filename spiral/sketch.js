@@ -1,17 +1,21 @@
 stepStep = currentStep = 3;
+x = y = 200;
+angle = currentAngle = 70;
 
 function setup() {
     createCanvas(400, 400);
-    noLoop();
+    frameRate(30);
+    background('black');
 }
 
 function draw() {
-    background('black');
-    x = y = 200;
-    angle = currentAngle = 70;
-    for (var i = stepStep; i < 500; i += stepStep) {
-        forward(i);
-        rotateRight();
+
+    forward(currentStep);
+    rotateRight();
+
+    currentStep += stepStep;
+    if (currentStep > 500) {
+        noLoop();
     }
 }
 
