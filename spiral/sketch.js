@@ -5,11 +5,10 @@ angle = currentAngle = 70;
 function setup() {
     createCanvas(400, 400);
     frameRate(30);
-    background('black');
+    background('#292929');
 }
 
 function draw() {
-
     forward(currentStep);
     rotateRight();
 
