@@ -1,3 +1,5 @@
+stepStep = currentStep = 3;
+
 function setup() {
     createCanvas(400, 400);
     noLoop();
@@ -6,8 +8,8 @@ function setup() {
 function draw() {
     background('black');
     x = y = 200;
-    angle = currentAngle = random(30, 170);
-    for (var i = 3; i < 500; i += 3) {
+    angle = currentAngle = 70;
+    for (var i = stepStep; i < 500; i += stepStep) {
         forward(i);
         rotateRight();
     }
@@ -23,16 +25,15 @@ function forward(step) {
     stepY = Math.round((step * Math.cos(Math.PI * 2 * currentAngle / 360)));
     toY =  fromY + stepY;
 
-    strokeWeight(50);
-    stroke('white');
-    line(fromX, fromY, toX, toY);
-    
-    strokeWeight(25);
-    stroke(random(125,150), random(100), random(125,250));
-    line(fromX, fromY, toX, toY);
+    drawLines(fromX, fromY, toX, toY);
 
     x = toX;
     y = toY;
+}
+
+function drawLines(fromX, fromY, toX, toY) {
+    stroke(random(125,150), random(100), random(125,250));
+    line(fromX, fromY, toX, toY);
 }
 
 function rotateRight() {
