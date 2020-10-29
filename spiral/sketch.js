@@ -8,6 +8,10 @@ function setup() {
     background('#292929');
 }
 
+export default function spiralDraw(f) {
+    f.draw = draw();
+}
+
 function draw() {
     forward(currentStep);
     rotateRight();

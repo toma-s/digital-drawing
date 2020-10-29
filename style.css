@@ -1,0 +1,22 @@
+body {
+    background-color: #292929;
+}
+
+#mode {
+    text-align: center;
+    margin: 42px 0;
+}
+
+button {
+    font-family: monospace, monospace;
+}
+
+button#spiral {
+    background-color: blueviolet;
+    border: none;
+    font-size: 24px;
+}
+
+#canvas > div {
+    text-align: center;
+}
