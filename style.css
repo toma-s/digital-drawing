@@ -12,12 +12,16 @@ button {
     font-family: monospace, monospace;
     cursor: pointer;
     color: black;
+    border: none;
+    font-size: 24px;
 }
 
 button#spiral {
     background-color: blueviolet;
-    border: none;
-    font-size: 24px;
+}
+
+button#triangles {
+    background-color: rgb(208, 255, 0);
 }
 
 #canvas {
