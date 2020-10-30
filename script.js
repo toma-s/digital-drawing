@@ -4,7 +4,6 @@ var canvasHeight = 20;
 
 window.onload = function() {
     setCanvasSize();
-    setTriangles();
 }
 
 function setCanvasSize() {
