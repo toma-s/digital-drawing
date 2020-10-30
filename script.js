@@ -14,7 +14,7 @@ function setCanvasSize() {
     let canvasElement = window.document.getElementById('canvas');
     canvasElement.style.width = `${size}px`;
     canvasElement.style.height = `${size}px`;
-    canvasElement.style.border = '4px solid white';
+    canvasElement.style.display = 'block';
 }
 
 function setSpiral() {
