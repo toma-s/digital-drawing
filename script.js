@@ -1,13 +1,50 @@
 
 var modes = ['Spiral'];
+var currentSketch;
+
+function init() {
+    // setTriangles();
+}
 
 function setSpiral() {
-    console.log('set spiral');
+    if (document.getElementById('canvasSpiral')) {
+        return;
+    }
+
+    clearUpCanvas();
 
     let element = document.createElement('div');
     element.id = 'canvasSpiral';
     window.document.getElementById('canvas').appendChild(element);
-    new p5(spiralSketch, element);
+    currentSketch = new p5(spiralSketch, element);
+    currentSketch.draw();
+}
+
+function setTriangles() {
+    if (document.getElementById('canvasTriangles')) {
+        return;
+    }
+
+    clearUpCanvas();
+
+    let element = document.createElement('div');
+    element.id = 'canvasTriangles';
+    window.document.getElementById('canvas').appendChild(element);
+    currentSketch = new p5(triangleSketch, element);
+}
+
+function clearUpCanvas() {
+    if (currentSketch) {
+        currentSketch.remove();
+        let canvasNode = document.getElementById('canvas');
+        if (canvasNode.firstElementChild) {
+            canvasNode.firstElementChild.remove();
+        }
+    }
+}
+
+let triangleSketch = function(f) {
+
 }
 
 let spiralSketch = function(f) {
