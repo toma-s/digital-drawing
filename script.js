@@ -1,9 +1,19 @@
-
-var modes = ['Spiral'];
 var currentSketch;
+var canvasWidth = 20;
+var canvasHeight = 20;
 
 window.onload = function() {
+    setCanvasSize();
     setTriangles();
+}
+
+function setCanvasSize() {
+    containerElement = window.document.getElementById('container');
+    size = Math.min(containerElement.offsetWidth, containerElement.offsetHeight) - 8;
+    canvasWidth = canvasHeight = size;
+    let canvasElement = window.document.getElementById('canvas');
+    canvasElement.style.width = `${size}px`;
+    canvasElement.style.height = `${size}px`;
 }
 
 function setSpiral() {
@@ -47,7 +57,7 @@ let triangleSketch = function(f) {
     let degreesMode = true;
 
     f.setup = function() {
-        f.createCanvas(400, 400);
+        f.createCanvas(canvasWidth, canvasHeight);
         f.background('#292929');
         f.frameRate(30);
         f.noFill();
@@ -55,7 +65,6 @@ let triangleSketch = function(f) {
     }
 
     f.draw = function() {
-        console.log(degreesMode);
         if (degreesMode) {
             f.angleMode(f.DEGREES);
             f.stroke(f.random(200,230), f.random(200,250), f.random(0));
@@ -63,7 +72,7 @@ let triangleSketch = function(f) {
             f.angleMode(f.RADIANS);
             f.stroke('#000');
         }
-        f.translate(200, 200);
+        f.translate(canvasWidth / 2, canvasHeight / 2);
         f.rotate(angle);
 
         f.triangle(-160, 160, 0, -160, 160, 160);
@@ -77,12 +86,13 @@ let triangleSketch = function(f) {
 }
 
 let spiralSketch = function(f) {
-    let x = y = 200;
+    let x = canvasWidth / 2;
+    let y = canvasHeight / 2;
     let stepStep = currentStep = 3;
     let angle = currentAngle = 70;
 
     f.setup = function() {
-        f.createCanvas(400, 400);
+        f.createCanvas(canvasWidth, canvasHeight);
         f.background('#292929');
         f.frameRate(30);
     };
