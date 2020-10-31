@@ -4,6 +4,7 @@ var canvasHeight = 20;
 
 window.onload = function() {
     setCanvasSize();
+    setDrag();
 }
 
 function setCanvasSize() {
@@ -57,17 +58,17 @@ function setCircle() {
     currentSketch = new p5(circleSketch, element);
 }
 
-function setX() {
-    if (document.getElementById('canvasX')) {
+function setDrag() {
+    if (document.getElementById('canvasDrag')) {
         return;
     }
 
     clearUpCanvas();
 
     let element = document.createElement('div');
-    element.id = 'canvasX';
+    element.id = 'canvasDrag';
     window.document.getElementById('canvas').appendChild(element);
-    currentSketch = new p5(sketchX, element);
+    currentSketch = new p5(sketchDrag, element);
 }
 
 
@@ -193,14 +194,32 @@ let circleSketch = function(f) {
     }
 }
 
-let sketchX = function(f) {
+let sketchDrag = function(f) {
+    var pointsBuffer = [];
+
     f.setup = function() {
         f.createCanvas(canvasWidth, canvasHeight);
         f.background('#292929');
         f.frameRate(30);
+        f.noLoop();
     };
     
-    f.mousePressed = function() {
+    f.mouseDragged = function() {
+        f.background('#292929');
+
+        f.stroke('#fff');
         f.point(f.mouseX, f.mouseY);
+        
+        pointsBuffer.push([f.mouseX, f.mouseY]);
+        if (pointsBuffer.length > 300) {
+            pointsBuffer.shift();
+        }
+
+        for (let i = 0; i < pointsBuffer.length; i++) {
+            pointsBuffer[i][0] += 1;
+            f.strokeWeight(f.random(1,10));
+            f.stroke(1*i, 1*i, 1*i);
+            f.point(pointsBuffer[i][0], pointsBuffer[i][1]);
+        }
     }
 }

@@ -29,6 +29,10 @@ button#circle {
     background-color: rgb(255, 0, 76);
 }
 
+button#drag {
+    background-color: rgb(255, 255, 255);
+}
+
 #container {
     height: calc(100% - 78px - 8px);
 }
