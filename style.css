@@ -25,6 +25,10 @@ button#triangles {
     background-color: rgb(208, 255, 0);
 }
 
+button#circle {
+    background-color: rgb(255, 0, 76);
+}
+
 #container {
     height: calc(100% - 78px - 8px);
 }

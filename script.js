@@ -42,6 +42,19 @@ function setTriangles() {
     currentSketch = new p5(triangleSketch, element);
 }
 
+function setCircle() {
+    if (document.getElementById('canvasCircle')) {
+        return;
+    }
+
+    clearUpCanvas();
+
+    let element = document.createElement('div');
+    element.id = 'canvasCircle';
+    window.document.getElementById('canvas').appendChild(element);
+    currentSketch = new p5(circleSketch, element);
+}
+
 function clearUpCanvas() {
     if (currentSketch) {
         currentSketch.remove();
@@ -70,12 +83,45 @@ let triangleSketch = function(f) {
             f.stroke(f.random(200,230), f.random(200,250), f.random(0));
         } else {
             f.angleMode(f.RADIANS);
-            f.stroke('#000');
+            f.stroke('#292929');
         }
         f.translate(canvasWidth / 2, canvasHeight / 2);
         f.rotate(angle);
 
-        f.triangle(-160, 160, 0, -160, 160, 160);
+        f.triangle(-200, 200, 0, 0, 200, 200);
+
+        angle += 1 % 360;
+        if (angle > 360) {
+            angle = 0;
+            degreesMode = !degreesMode;
+        }
+    }
+}
+
+let circleSketch = function(f) {
+    let angle = 0;
+    let degreesMode = true;
+
+    f.setup = function() {
+        f.createCanvas(canvasWidth, canvasHeight);
+        f.background('#292929');
+        f.frameRate(30);
+        f.noFill();
+        f.angleMode(f.DEGREES);
+    }
+
+    f.draw = function() {
+        if (degreesMode) {
+            f.angleMode(f.DEGREES);
+            f.stroke(f.random(210,250), f.random(30), f.random(50, 100));
+        } else {
+            f.angleMode(f.RADIANS);
+            f.stroke('#292929');
+        }
+        f.translate(canvasWidth / 2, canvasHeight / 2);
+        f.rotate(angle);
+
+        f.triangle(-200, 200, 0, 0, 200, 200);
 
         angle += 1 % 360;
         if (angle > 360) {
