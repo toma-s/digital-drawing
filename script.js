@@ -4,7 +4,7 @@ var canvasHeight = 20;
 
 window.onload = function() {
     setCanvasSize();
-    setDrag();
+    setWelcome();
 }
 
 function setCanvasSize() {
@@ -18,6 +18,12 @@ function setCanvasSize() {
 }
 
 
+function setWelcome() {
+    let element = document.createElement('div');
+    element.id = 'canvasWelcome';
+    window.document.getElementById('canvas').appendChild(element);
+    currentSketch = new p5(welcomeSketch, element);
+}
 
 function setSpiral() {
     if (document.getElementById('canvasSpiral')) {
@@ -84,6 +90,17 @@ function clearUpCanvas() {
 }
 
 
+let welcomeSketch = function(f) {
+    f.setup = function() {
+        f.createCanvas(canvasWidth, canvasHeight);
+        f.background('#292929');
+        f.textSize(canvasWidth / 5);
+        f.textAlign(f.CENTER, f.CENTER);
+        f.fill('white');
+        f.text('^', canvasHeight / 2, canvasHeight / 2 - canvasHeight / 8);
+        f.text('¦', canvasHeight / 2, canvasHeight / 2);
+    }
+}
 
 let spiralSketch = function(f) {
     let x = canvasWidth / 2;
@@ -203,13 +220,20 @@ let sketchDrag = function(f) {
         f.frameRate(30);
         f.noLoop();
     };
+
+    f.draw = function() {
+        f.textSize(canvasWidth / 10);
+        f.textAlign(f.CENTER, f.CENTER);
+        f.fill('white');
+        f.text('drag to draw', canvasHeight / 2, canvasHeight / 2);
+    }
     
     f.mouseDragged = function() {
         f.background('#292929');
 
         f.stroke('#fff');
         f.point(f.mouseX, f.mouseY);
-        
+
         pointsBuffer.push([f.mouseX, f.mouseY]);
         if (pointsBuffer.length > 300) {
             pointsBuffer.shift();
