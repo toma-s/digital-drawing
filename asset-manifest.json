@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/digital-drawing/static/css/main.72e332cc.chunk.css",
+    "main.js": "/digital-drawing/static/js/main.6345d27e.chunk.js",
+    "main.js.map": "/digital-drawing/static/js/main.6345d27e.chunk.js.map",
+    "runtime-main.js": "/digital-drawing/static/js/runtime-main.a696c1fe.js",
+    "runtime-main.js.map": "/digital-drawing/static/js/runtime-main.a696c1fe.js.map",
+    "static/js/2.1144197f.chunk.js": "/digital-drawing/static/js/2.1144197f.chunk.js",
+    "static/js/2.1144197f.chunk.js.map": "/digital-drawing/static/js/2.1144197f.chunk.js.map",
+    "static/js/3.62170799.chunk.js": "/digital-drawing/static/js/3.62170799.chunk.js",
+    "static/js/3.62170799.chunk.js.map": "/digital-drawing/static/js/3.62170799.chunk.js.map",
+    "index.html": "/digital-drawing/index.html",
+    "static/css/main.72e332cc.chunk.css.map": "/digital-drawing/static/css/main.72e332cc.chunk.css.map",
+    "static/js/2.1144197f.chunk.js.LICENSE.txt": "/digital-drawing/static/js/2.1144197f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a696c1fe.js",
+    "static/js/2.1144197f.chunk.js",
+    "static/css/main.72e332cc.chunk.css",
+    "static/js/main.6345d27e.chunk.js"
+  ]
+}
