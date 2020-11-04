@@ -35,4 +35,15 @@ export default function sketchDrag (p) {
             p.point(pointsBuffer[i][0], pointsBuffer[i][1]);
         }
     }
+
+    p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
+        if (props.canvasWidth !== null) {
+            canvasWidth = props.canvasWidth;
+        }
+        if (props.canvasHeight !== null) {
+            canvasHeight = props.canvasHeight;
+        }
+        p.setup();
+        p.draw();
+    }
 }

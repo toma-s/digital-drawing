@@ -1,5 +1,8 @@
 body {
   background-color: #292929;
+}
+
+#root {
   margin: 24px 18px;
 }
 
@@ -33,14 +36,9 @@ button#drag {
   background-color: rgb(255, 255, 255);
 }
 
-#container {
-  height: calc(100% - 78px - 8px);
-}
-
 #canvas {
   border: 4px solid white;
   margin: auto;
-  display: none;
 }
 
 #container > div {

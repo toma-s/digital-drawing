@@ -9,8 +9,9 @@ import './App.css';
 
 class App extends Component {
 
-  canvasWidth = 400;
-  canvasHeight = 400;
+  canvasWidth = 0;
+  canvasHeight = 0;
+  sketches = [welcomeSketch, spiralSketch, trianglesSketch, circleSketch, dragSketch];
 
   constructor(props) {
     super(props);
@@ -18,14 +19,22 @@ class App extends Component {
     this.setTriangles = this.setTriangles.bind(this);
     this.setCircle = this.setCircle.bind(this);
     this.setDrag = this.setDrag.bind(this);
-    this.state = {currentSketch: welcomeSketch};
+    this.state = {currentSketch: undefined};
   }
 
-  // todo: refactor duplicates
-  // todo: handle canvas size var
-  // todo: handle canvas size change
-  // todo: add border
+  componentDidMount() {
+    this.setCanvasSize();
+    this.setState({currentSketch: welcomeSketch});
+  }
 
+  setCanvasSize() {
+    let size = Math.min(window.innerWidth - 44, window.innerHeight - 110);
+    this.canvasWidth = this.canvasHeight = size;
+    let canvasElement = window.document.getElementById('canvas');
+    canvasElement.style.width = `${size}px`;
+    canvasElement.style.height = `${size}px`;
+  }
+ 
   setSpiral() {
     this.setState({currentSketch: spiralSketch});
   }
@@ -53,13 +62,15 @@ class App extends Component {
           <button id="drag" onClick={this.setDrag}>Drag</button>
         </div>
         <div id="container">
-          {this.state.currentSketch === welcomeSketch && <P5Wrapper sketch={welcomeSketch}></P5Wrapper>}
-          {this.state.currentSketch === spiralSketch && <P5Wrapper sketch={spiralSketch}></P5Wrapper>}
-          {this.state.currentSketch === trianglesSketch && <P5Wrapper sketch={trianglesSketch}></P5Wrapper>}
-          {this.state.currentSketch === circleSketch && <P5Wrapper sketch={circleSketch}></P5Wrapper>}
-          {this.state.currentSketch === dragSketch && <P5Wrapper sketch={dragSketch}></P5Wrapper>}
+          <div id="canvas">
+            {
+              this.sketches.map((sketch, i) => (
+                this.state.currentSketch === sketch && 
+                <P5Wrapper key={i} sketch={sketch} canvasWidth={this.canvasWidth} canvasHeight={this.canvasHeight}></P5Wrapper>
+              ))
+            }
+          </div>
         </div>
-        {/* <Canvas currentSketch={this.state.currentSketch} /> */}
       </div>
     )
   }

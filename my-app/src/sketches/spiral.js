@@ -1,15 +1,17 @@
 export default function spiralSketch(p) {
-    let canvasWidth = 400;
-    let canvasHeight = 400;
+    var canvasWidth = 0;
+    var canvasHeight = 0;
 
-    let x = canvasWidth / 2;
-    let y = canvasHeight / 2;
-    let stepStep = 3;
-    let currentStep = 3;
-    let angle = 70;
-    let currentAngle = 70;
+    var x = 0;
+    var y = 0;
+    var stepStep = 3;
+    var currentStep = 3;
+    var angle = 70;
+    var currentAngle = 70;
 
     p.setup = function() {
+        x = canvasWidth / 2;
+        y = canvasHeight / 2;
         p.createCanvas(canvasWidth, canvasHeight);
         p.background('#292929');
         p.frameRate(30);
@@ -44,4 +46,15 @@ export default function spiralSketch(p) {
     p.rotateRight = function() {
         currentAngle += angle % 360;
     };
+
+    p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
+        if (props.canvasWidth !== null) {
+            canvasWidth = props.canvasWidth;
+        }
+        if (props.canvasHeight !== null) {
+            canvasHeight = props.canvasHeight;
+        }
+        p.setup();
+        p.draw();
+    }
 }

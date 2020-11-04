@@ -1,8 +1,8 @@
 export default function trianglesSketch(p) {
-    let angle = 0;
-    let degreesMode = true;
-    let canvasWidth = 400;
-    let canvasHeight = 400;
+    var angle = 0;
+    var degreesMode = true;
+    var canvasWidth = 0;
+    var canvasHeight = 0;
 
     p.setup = function() {
         p.createCanvas(canvasWidth, canvasHeight);
@@ -30,5 +30,16 @@ export default function trianglesSketch(p) {
             angle = 0;
             degreesMode = !degreesMode;
         }
+    }
+
+    p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
+        if (props.canvasWidth !== null) {
+            canvasWidth = props.canvasWidth;
+        }
+        if (props.canvasHeight !== null) {
+            canvasHeight = props.canvasHeight;
+        }
+        p.setup();
+        p.draw();
     }
 }

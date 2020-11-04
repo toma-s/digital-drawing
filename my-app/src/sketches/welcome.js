@@ -1,7 +1,7 @@
 export default function welcomeSketch(p) {
 
-    let canvasWidth = 400;
-    let canvasHeight = 400;
+    let canvasWidth = 0;
+    let canvasHeight = 0;
 
     p.setup = function() {
         p.createCanvas(canvasWidth, canvasHeight);
@@ -11,5 +11,15 @@ export default function welcomeSketch(p) {
         p.fill('white');
         p.text('^', canvasHeight / 2, canvasHeight / 2 - canvasHeight / 8);
         p.text('¦', canvasHeight / 2, canvasHeight / 2);
+    }
+
+    p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
+        if (props.canvasWidth !== null) {
+            canvasWidth = props.canvasWidth;
+        }
+        if (props.canvasHeight !== null) {
+            canvasHeight = props.canvasHeight;
+        }
+        p.setup();
     }
 }

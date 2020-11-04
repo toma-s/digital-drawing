@@ -31,4 +31,15 @@ export default function circleSketch(p) {
             degreesMode = !degreesMode;
         }
     }
+
+    p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
+        if (props.canvasWidth !== null) {
+            canvasWidth = props.canvasWidth;
+        }
+        if (props.canvasHeight !== null) {
+            canvasHeight = props.canvasHeight;
+        }
+        p.setup();
+        p.draw();
+    }
 }
