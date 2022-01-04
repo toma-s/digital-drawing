@@ -1,3 +1,5 @@
+import { BACKGROUND_COLOR } from './constants';
+
 export default function spiralSketch(p) {
     var canvasWidth = 0;
     var canvasHeight = 0;
@@ -13,7 +15,7 @@ export default function spiralSketch(p) {
         x = canvasWidth / 2;
         y = canvasHeight / 2;
         p.createCanvas(canvasWidth, canvasHeight);
-        p.background('#292929');
+        p.background(BACKGROUND_COLOR);
         p.frameRate(30);
     };
 

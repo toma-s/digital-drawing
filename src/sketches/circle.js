@@ -1,13 +1,17 @@
+import { BACKGROUND_COLOR } from './constants';
+
 export default function circleSketch(p) {
     let angle = 0;
     let degreesMode = true;
     let canvasWidth = 400;
     let canvasHeight = 400;
+    var initColorsRgb = [41, 41, 0];
+    var first = true;
 
     p.setup = function() {
         p.createCanvas(canvasWidth, canvasHeight);
-        p.background('#292929');
-        p.frameRate(30);
+        p.background(BACKGROUND_COLOR);
+        p.frameRate(60);
         p.noFill();
         p.angleMode(p.DEGREES);
     }
@@ -15,20 +19,26 @@ export default function circleSketch(p) {
     p.draw = function() {
         if (degreesMode) {
             p.angleMode(p.DEGREES);
-            p.stroke(p.random(210,250), p.random(30), p.random(50, 100));
+            p.stroke(initColorsRgb[0], initColorsRgb[1], initColorsRgb[2]);
         } else {
             p.angleMode(p.RADIANS);
-            p.stroke('#292929');
+            p.stroke(BACKGROUND_COLOR);
         }
         p.translate(canvasWidth / 2, canvasHeight / 2);
         p.rotate(angle);
 
-        p.triangle(-200, 200, 0, 0, 200, 200);
+        var point = 130;
+        p.triangle(-point, point, 0, 0, point, point);
 
+        if (first && (initColorsRgb[0] < 250 || initColorsRgb[1] < 250)) {
+            initColorsRgb = [initColorsRgb[0] + 1.5, initColorsRgb[1], initColorsRgb[2] + 0.20];
+        }
         angle += 1 % 360;
         if (angle > 360) {
+            first = false;
             angle = 0;
             degreesMode = !degreesMode;
+            initColorsRgb = [250, 41, 40];
         }
     }
 

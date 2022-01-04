@@ -1,3 +1,5 @@
+import { BACKGROUND_COLOR } from './constants';
+
 export default function sketchDrag (p) {
     var pointsBuffer = [];
     let canvasWidth = 400;
@@ -5,7 +7,7 @@ export default function sketchDrag (p) {
 
     p.setup = function() {
         p.createCanvas(canvasWidth, canvasHeight);
-        p.background('#292929');
+        p.background(BACKGROUND_COLOR);
         p.frameRate(30);
         p.noLoop();
     };
@@ -15,10 +17,11 @@ export default function sketchDrag (p) {
         p.textAlign(p.CENTER, p.CENTER);
         p.fill('white');
         p.text('drag to draw', canvasHeight / 2, canvasHeight / 2);
+        p.noLoop();
     }
     
     p.mouseDragged = function() {
-        p.background('#292929');
+        p.background(BACKGROUND_COLOR);
 
         p.stroke('#fff');
         p.point(p.mouseX, p.mouseY);
