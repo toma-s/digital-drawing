@@ -38,7 +38,7 @@ export default function spiralSketch(p) {
         let stepY = Math.round((currentStep * Math.cos(Math.PI * 2 * currentAngle / 360)));
         let toY =  fromY + stepY;
 
-        p.stroke(p.random(125,150), p.random(100), p.random(125,250));
+        p.stroke(180, 40, 240);
         p.line(fromX, fromY, toX, toY);
 
         x = toX;
