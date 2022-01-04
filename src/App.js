@@ -4,6 +4,7 @@ import spiralSketch from './sketches/spiral';
 import trianglesSketch from './sketches/triangles';
 import circleSketch from './sketches/circle';
 import dragSketch from './sketches/drag';
+import forestSketch from './sketches/forest';
 import P5Wrapper from 'react-p5-wrapper';
 import './App.css';
 
@@ -11,7 +12,7 @@ class App extends Component {
 
   canvasWidth = 0;
   canvasHeight = 0;
-  sketches = [welcomeSketch, spiralSketch, trianglesSketch, circleSketch, dragSketch];
+  sketches = [welcomeSketch, spiralSketch, trianglesSketch, circleSketch, dragSketch, forestSketch];
 
   constructor(props) {
     super(props);
@@ -19,6 +20,7 @@ class App extends Component {
     this.setTriangles = this.setTriangles.bind(this);
     this.setCircle = this.setCircle.bind(this);
     this.setDrag = this.setDrag.bind(this);
+    this.setForest = this.setForest.bind(this);
     this.state = {currentSketch: undefined};
   }
 
@@ -51,16 +53,13 @@ class App extends Component {
     this.setState({currentSketch: dragSketch});
   }
 
+  setForest() {
+    this.setState({currentSketch: forestSketch});
+  }
 
   render() {
     return (
       <div>
-        <div id="mode">
-          <button id="spiral" onClick={this.setSpiral}>Spiral</button>
-          <button id="triangles" onClick={this.setTriangles}>Triangles</button>
-          <button id="circle" onClick={this.setCircle}>Circle</button>
-          <button id="drag" onClick={this.setDrag}>Drag</button>
-        </div>
         <div id="container">
           <div id="canvas">
             {
@@ -70,6 +69,13 @@ class App extends Component {
               ))
             }
           </div>
+        </div>
+        <div className="buttons-row">
+          <button id="spiral" onClick={this.setSpiral}>Spiral</button>
+          <button id="circle" onClick={this.setCircle}>Circle</button>
+          <button id="triangles" onClick={this.setTriangles}>Triangles</button>
+          <button id="drag" onClick={this.setDrag}>Drag</button>
+          <button id="forest" onClick={this.setForest}>Forest</button>
         </div>
       </div>
     )

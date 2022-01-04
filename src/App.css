@@ -6,10 +6,8 @@ body {
   margin: 24px 18px;
 }
 
-#mode {
+.buttons-row {
   text-align: center;
-  padding-bottom: 24px;
-  height: 30;
 }
 
 button {
@@ -18,26 +16,41 @@ button {
   color: black;
   border: none;
   font-size: 24px;
+  margin: 8px;
 }
 
 button#spiral {
-  background-color: blueviolet;
+  background-color: #292929;
+  border: 2px solid blueviolet;
+  color: white;
 }
 
 button#triangles {
-  background-color: rgb(208, 255, 0);
+  background-color: #292929;
+  border: 2px solid rgb(250, 250, 60);
+  color: white;
 }
 
 button#circle {
-  background-color: rgb(255, 0, 76);
+  background-color: #292929;
+  border: 2px solid rgb(250, 41, 40);
+  color: white;
 }
 
 button#drag {
-  background-color: rgb(255, 255, 255);
+  background-color: #292929;
+  border: 2px solid rgb(238, 238, 238);
+  color: white;
+}
+
+button#forest {
+  background-color: #292929;
+  border: 2px solid #4D65A1;
+  color: white;
 }
 
 #canvas {
-  border: 4px solid white;
+  border: 1px solid gray;
   margin: auto;
 }
 

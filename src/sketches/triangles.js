@@ -1,13 +1,17 @@
+import { BACKGROUND_COLOR } from './constants';
+
 export default function trianglesSketch(p) {
     var angle = 0;
     var degreesMode = true;
     var canvasWidth = 0;
     var canvasHeight = 0;
+    var initColorsRgb = [41, 0, 41];
+    var first = true;
 
     p.setup = function() {
         p.createCanvas(canvasWidth, canvasHeight);
-        p.background('#292929');
-        p.frameRate(30);
+        p.background(BACKGROUND_COLOR);
+        p.frameRate(60);
         p.noFill();
         p.angleMode(p.DEGREES);
     }
@@ -15,20 +19,28 @@ export default function trianglesSketch(p) {
     p.draw = function() {
         if (degreesMode) {
             p.angleMode(p.DEGREES);
-            p.stroke(p.random(200,230), p.random(200,250), p.random(0));
+            p.stroke(initColorsRgb[0], initColorsRgb[1], initColorsRgb[2]);
+            
         } else {
             p.angleMode(p.RADIANS);
-            p.stroke('#292929');
+            p.stroke(BACKGROUND_COLOR);
         }
         p.translate(canvasWidth / 2, canvasHeight / 2);
         p.rotate(angle);
 
-        p.triangle(-160, 160, 0, -160, 160, 160);
+        var point = 130;
+        p.triangle(-point, point, 0, -point, point, point);
 
+        if (initColorsRgb[0] < 250 || initColorsRgb[1] < 250) {
+            initColorsRgb = [initColorsRgb[0] + 2, initColorsRgb[1] + 2.15, initColorsRgb[2] + 0.15];
+        }
         angle += 1 % 360;
         if (angle > 360) {
+            first = false;
+            console.log(initColorsRgb)
             angle = 0;
             degreesMode = !degreesMode;
+            initColorsRgb = [250, 250, 60];
         }
     }
 
